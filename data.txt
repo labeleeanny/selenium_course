@@ -1,0 +1,40 @@
+﻿
+Lengths of the „Form“ field:  ~search , ~B, Br, Bre, Hgkriowjfejefqjigjrfevvfnfeinfeifiqjieggjijiqefioefjrgejvjfjvmvbmnvjrwnjiffewfwfifewigrjivijirririri, Tughwvfeefjbivnvvkdvdkbfnvrnvfqeenoigrnrvvnovonvnovvjoiddvnvdnvdiosvdivdnvdnvdndvindsvindsvindvnisvdinovdvndnviddvnvdnosvdovdoidveoifeirirjrgjigoegriiroijgjijigriwepeeopbjbgjvfnvfnjsvndjaddkvjnvnkksv, Tughwvfeefjbivnvvkdvdkbfnvrnvfqeenoigrnrvvnovonvnovvjoiddvnvdnvdiosvdivdnvdnvdndvindsvindsvindvnisvdinovdvndnviddvnvdnosvdovdoidveoifeirirjrgjigoegriiroijgjijigriwepeeopbjbgjvfnvfnjsvndjaddkvjnvnkksvk, ~Tughwvfeefjbivnvvkdvdkbfnvrnvfqeenoigrnrvvnovonvnovvjoiddvnvdnvdiosvdivdnvdnvdndvindsvindsvindvnisvdinovdvndnviddvnvdnosvdovdoidveoifeirirjrgjigoegriiroijgjijigriwepeeopbjbgjvfnvfnjsvndjaddkvjnvnkksvls
+Size of the characters of the „Form“ field: ~brest, Brest, BREST
+Data type of the „Form“ field: ~123, ~Brest123, ~#Brest, ~Брест, Brest, Winston-Salem, San Diego
+Space symbol of the „Form“ field: ~_, _Brest, Brest_
+Lengths of the „To“ field:  ~search , ~B, Br, Bre, Hgkriowjfejefqjigjrfevvfnfeinfeifiqjieggjijiqefioefjrgejvjfjvmvbmnvjrwnjiffewfwfifewigrjivijirririri, Tughwvfeefjbivnvvkdvdkbfnvrnvfqeenoigrnrvvnovonvnovvjoiddvnvdnvdiosvdivdnvdnvdndvindsvindsvindvnisvdinovdvndnviddvnvdnosvdovdoidveoifeirirjrgjigoegriiroijgjijigriwepeeopbjbgjvfnvfnjsvndjaddkvjnvnkksv, Tughwvfeefjbivnvvkdvdkbfnvrnvfqeenoigrnrvvnovonvnovvjoiddvnvdnvdiosvdivdnvdnvdndvindsvindsvindvnisvdinovdvndnviddvnvdnosvdovdoidveoifeirirjrgjigoegriiroijgjijigriwepeeopbjbgjvfnvfnjsvndjaddkvjnvnkksvk, ~Tughwvfeefjbivnvvkdvdkbfnvrnvfqeenoigrnrvvnovonvnovvjoiddvnvdnvdiosvdivdnvdnvdndvindsvindsvindvnisvdinovdvndnviddvnvdnosvdovdoidveoifeirirjrgjigoegriiroijgjijigriwepeeopbjbgjvfnvfnjsvndjaddkvjnvnkksvls
+Size of the characters of the „To“ field: ~brest, Brest, BREST
+Data type of the „To“ field: ~123, ~Brest123, ~#Brest, ~Брест, Brest, Winston-Salem, San Diego
+Space symbol of the „To“ field: ~_, _Brest, Brest_
+Depart day:  1,2,3,4,5,6,7,8,9,10,11,12,13,4,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31
+Depart month: May, April, October, December, June, July, August, September, November, January, March, February
+Depart year: 2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028
+Return day:  ~one way, 28,29,30,31
+Return month: ~one way, May, April, October, December, June, July, August, September, November, January, March, February
+Return year: ~one way, ~2021, 2022, 2023, 2024, 2025, 2026, 2027, 2028
+Adult: 0, 1, 2, 50, 99, 100, ~101
+Child: 0, 1, 2, 50, 99, 100, ~101
+Infant: 0, 1, 2, 50, 99, 100, ~101
+Class: First, Business, Economy
+Which way is the ticket: one way, round trip
+
+IF [Adult] = "1,2,50, 99, 100" THEN [Child] <= 0;
+IF [Adult] = "1,2,50, 99, 100" THEN [Infant] <= 0;
+IF [Child] = "1,2,50, 99, 100" THEN [Adult] <= 0;
+IF [Child] = "1,2,50, 99, 100" THEN [Infant] <= 0;
+IF [Infant] = "1,2,50, 99, 100" THEN [Adult] <= 0;
+IF [Infant] = "1,2,50, 99, 100" THEN [Child] <= 0;
+
+
+
+IF [Depart day] in {"28"} THEN [Depart month] in {"February"} THEN [Depart year] in {"2022"};
+IF [Depart day] in {"29"} THEN [Depart month] in {"February"} THEN [Depart year] in {"2024", "2028"};
+IF [Depart day] in {"31"} THEN [Depart month] in {"May", "July", "August","October", "December"}  THEN [Depart year] in {"2021", "2022", "2023","2025","2026", "2027"};
+IF [Depart day] in {"30"} THEN [Depart month] in {"June", "September","November"}  THEN [Depart year] in {"2021", "2022", "2023","2025","2026", "2027"};
+IF [Return day] in {"28"} THEN [Return month] in {"February"} THEN [Return year] in {"2022", "2023","2025","2026","2027"};
+IF [Return day] in {"29"} THEN [Return month] in {"February"} THEN [Return year] in {"2024", "2028"};
+IF [Return day] in {"31"} THEN [Return month] in {"May", "July", "August","October", "December"}  THEN [Return year] in {"2021", "2022", "2023","2025","2026", "2027"};
+IF [Return day] in {"30"} THEN [Return month] in {"June", "September","November"}  THEN [Return year] in {"2021", "2022", "2023","2025","2026", "2027"};
+
+
